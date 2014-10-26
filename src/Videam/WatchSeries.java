@@ -28,6 +28,7 @@ public class WatchSeries extends Website {
     private final String EpisodeNumberPattern = "Episode ([0-9]+)";
     
     private final String FirstLinkPattern = "Watch This Link\\!\\</a\\>\\</td\\>\\<td\\> \\<a target=\"\\_blank\"(.*?)\\>Free ";
+    private final String SecondLinkPattern = "\\<a class=\"myButton\" (.*?)\\>";
     //private
     
     public WatchSeries() {
@@ -37,7 +38,23 @@ public class WatchSeries extends Website {
         setType("tv");
     }
     
-    public String getWorkingLink(){
+    public String getWorkingLink(String url){ //temp input because cba to find episode link
+        //parse all links
+        String content = getContent(url);
+        //parse episode
+        ArrayList<String> links = parse(FirstLinkPattern, content);
+        for (String link : links) {
+            //System.out.println(link);
+            String temp = parse(UrlPattern,link).get(0);
+            System.out.println(this.url+temp);
+            content = getContent(this.url+temp);
+            ArrayList<String> link2 = parse(SecondLinkPattern, content); //get link
+            temp = parse(UrlPattern, link2.get(0)).get(0);
+            return temp;
+        }
+        //navigate to each link until it works
+        //
+        
         return null;
     }
     

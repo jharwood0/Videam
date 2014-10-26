@@ -205,9 +205,10 @@ public class Main extends javax.swing.JFrame {
             i++;
         }
         watchseries.setEpisode(i);
+        String link = watchseries.getWorkingLink(episodes.get(watchseries.getEpisode()).getUrl());
         if (Desktop.isDesktopSupported()) {
             try {
-                Desktop.getDesktop().browse(new URI(episodes.get(watchseries.getEpisode()).getUrl()));
+                Desktop.getDesktop().browse(new URI(link));
             } catch (IOException | URISyntaxException ex) {
                 //Logger.getLogger(Videam.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -215,7 +216,7 @@ public class Main extends javax.swing.JFrame {
             try {
                 // Ubuntu
                 Runtime runtime = Runtime.getRuntime();
-                runtime.exec("/usr/bin/google-chrome -new-window " + episodes.get(watchseries.getEpisode()).getUrl());
+                runtime.exec("/usr/bin/google-chrome -new-window " + link);
             } catch (IOException ex) {
                 //Logger.getLogger(Videam.class.getName()).log(Level.SEVERE, null, ex);
             }
