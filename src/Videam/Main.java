@@ -192,7 +192,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //set episode
-        
+        //parse working link
         
         System.out.println("You selected episode: "+jList3.getSelectedIndex());
         System.out.println("setepisode = "+episodes.get(watchseries.getEpisode()).getNumber());
@@ -209,7 +209,7 @@ public class Main extends javax.swing.JFrame {
             try {
                 Desktop.getDesktop().browse(new URI(episodes.get(watchseries.getEpisode()).getUrl()));
             } catch (IOException | URISyntaxException ex) {
-                Logger.getLogger(Videam.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Videam.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
             try {
@@ -217,7 +217,7 @@ public class Main extends javax.swing.JFrame {
                 Runtime runtime = Runtime.getRuntime();
                 runtime.exec("/usr/bin/google-chrome -new-window " + episodes.get(watchseries.getEpisode()).getUrl());
             } catch (IOException ex) {
-                Logger.getLogger(Videam.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Videam.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed

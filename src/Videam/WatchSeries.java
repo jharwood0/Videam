@@ -27,11 +27,18 @@ public class WatchSeries extends Website {
     private final String EpisodeNamePattern = "\\<span class=\"\" \\>(.*)\\</sp"; //this needs to work for both valid and invalid links
     private final String EpisodeNumberPattern = "Episode ([0-9]+)";
     
+    private final String FirstLinkPattern = "Watch This Link\\!\\</a\\>\\</td\\>\\<td\\> \\<a target=\"\\_blank\"(.*?)\\>Free ";
+    //private
+    
     public WatchSeries() {
         setUrl("http://watchseries.lt");
         setName("Watch Series");
         setSearch("/search/");
         setType("tv");
+    }
+    
+    public String getWorkingLink(){
+        return null;
     }
     
     public ArrayList<Season> getSeasons(){
