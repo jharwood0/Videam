@@ -55,6 +55,9 @@ public class Website {
     public void setSeason(int season){
         this.season = season - 1; //off by one error because arraylist starts at 0
     }
+    public int getSeason(){
+        return this.season;
+    }
     public int getEpisode(){
         return this.episode; //ts at 0
     }

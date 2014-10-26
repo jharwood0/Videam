@@ -37,4 +37,8 @@ public class Season {
     public ArrayList<Episode> getEpisodes(){
         return episodes;
     }
+    @Override
+    public String toString(){
+        return "Season "+this.number;
+    }
 }
