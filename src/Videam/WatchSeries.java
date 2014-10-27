@@ -84,7 +84,7 @@ public class WatchSeries extends Website {
         
         for (String episodelist1 : episodelist) {
             Episode temp = new Episode();
-            //System.out.println(episodelist1);
+            System.out.println(episodelist1);
             temp.setTitle(parse(EpisodeNamePattern, episodelist1).get(0).replace("&nbsp;"," "));
             temp.setUrl(getUrl()+parse(UrlPattern,episodelist1).get(0));
             temp.setNumber(Integer.parseInt(parse(EpisodeNumberPattern,episodelist1).get(0)));

@@ -221,7 +221,18 @@ public class Main extends javax.swing.JFrame {
         episodes = watchseries.getEpisodes();
         
         DefaultListModel<Episode> model = new DefaultListModel<>(); //for jList
-        model.addElement(null);
+        //model.addElement(null); //adding the first element because msot shows start at episode 1
+        //error occurs because its adding episode 9 to element 9 in the list
+        //to fix this i should loop through number of episodes and set them to null
+        int latestep = 0;
+        for (Episode episode : episodes) {
+            if(episode.getNumber() > latestep){
+                latestep = episode.getNumber();
+            }
+        }
+        for (int i = 0; i < latestep; i++) {
+            model.addElement(null);
+        }
         for (Episode episode : episodes) {
             model.add(episode.getNumber(),episode);
         }

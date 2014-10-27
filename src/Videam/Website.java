@@ -66,7 +66,7 @@ public class Website {
     }
     
     protected String getContent(String urlin){
-        //System.out.println("Getting content for "+urlin);
+        System.out.println("Getting content for "+urlin);
          try {
             URL url = new URL(urlin);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -79,10 +79,12 @@ public class Website {
                 html = html + inputLine + "\n";
             }
             in.close();
+             System.out.println("Got content");
             return html;
         } catch (MalformedURLException e) {
         } catch (IOException e) {
         }
+         System.out.println("Error getting content");
          return null;
     }
     protected boolean checkShows(String name){
@@ -119,7 +121,7 @@ public class Website {
             out.add(matcher.group(1));
         }
         if(out.isEmpty()){
-            out.add("Parse Error - please check your website class");
+            out.add("empty");
         }
         return out;
     }
