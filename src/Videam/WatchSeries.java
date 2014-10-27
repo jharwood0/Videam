@@ -38,24 +38,25 @@ public class WatchSeries extends Website {
         setType("tv");
     }
     
-    public String getWorkingLink(String url){ //temp input because cba to find episode link
+    public String getWorkingLink(String url, int linkno){ //temp input because cba to find episode link
         //parse all links
         String content = getContent(url);
         //parse episode
         ArrayList<String> links = parse(FirstLinkPattern, content);
-        for (String link : links) {
+        
+        //for (String link : links) {
             //System.out.println(link);
-            String temp = parse(UrlPattern,link).get(0);
+            String temp = parse(UrlPattern,links.get(linkno)).get(0);
             System.out.println(this.url+temp);
             content = getContent(this.url+temp);
             ArrayList<String> link2 = parse(SecondLinkPattern, content); //get link
             temp = parse(UrlPattern, link2.get(0)).get(0);
             return temp;
-        }
+        //}
         //navigate to each link until it works
         //
         
-        return null;
+        //return null;
     }
     
     public ArrayList<Season> getSeasons(){
@@ -84,7 +85,7 @@ public class WatchSeries extends Website {
         
         for (String episodelist1 : episodelist) {
             Episode temp = new Episode();
-            System.out.println(episodelist1);
+            //System.out.println(episodelist1);
             temp.setTitle(parse(EpisodeNamePattern, episodelist1).get(0).replace("&nbsp;"," "));
             temp.setUrl(getUrl()+parse(UrlPattern,episodelist1).get(0));
             temp.setNumber(Integer.parseInt(parse(EpisodeNumberPattern,episodelist1).get(0)));
